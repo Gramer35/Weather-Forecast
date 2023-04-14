@@ -1,21 +1,20 @@
 const citySearch = $('#citySearch');
-const cityInput = $('#cityInput');
 const errorDiv = $('#error')
 
 function displayMessage(type, message) {
     errorDiv.textContent = message;
-    errorDiv.setAttribute('class', type);
+    errorDiv.attr('class', type);
 }
 
 
 function cityFetch(event) {
-    debugger;
+    // debugger;
     event.preventDefault();
     console.log('working');
 
-    const city = cityInput.value;
+    const city = $('cityInput').value;
     
-    if (city === "") {
+    if (!city) {
         displayMessage('error', 'Please enter a city!');
     };
 
