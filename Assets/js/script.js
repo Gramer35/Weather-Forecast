@@ -1,8 +1,15 @@
 const citySearch = $('#citySearch');
 const cityInput = $('#cityInput');
+const errorDiv = $('#error')
+
+function displayMessage(type, message) {
+    errorDiv.textContent = message;
+    errorDiv.setAttribute('class', type);
+}
 
 
 function cityFetch(event) {
+    debugger;
     event.preventDefault();
     console.log('working');
 
