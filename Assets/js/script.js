@@ -9,7 +9,9 @@ const previousCities = localStorage.getItem("previousCities")
 
 renderCityBtns();
 
-function getWeatherData(city) {}
+function getWeatherData(city) {
+  
+}
 
 function displayMessage(type, message) {
   errorDiv.text(message);
@@ -32,6 +34,7 @@ function cityFetch(event) {
 
   if (!city) {
     displayMessage("error", "Please enter a city!");
+    return
   }
 
   // If the city is not in our previous cities array
@@ -43,6 +46,11 @@ function cityFetch(event) {
     localStorage.setItem("previousCities", JSON.stringify(previousCities));
     renderCityBtns();
   }
+
+  
+    const searchedCity = 'Assets/html/searchedCity.html'
+    location.assign(searchedCity);
+    
 
   getWeatherData(city);
 }
