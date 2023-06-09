@@ -3,15 +3,17 @@ const errorDiv = $("#error");
 const cityArray = $('#cityArray');
 const newSearch = $('#newSearch');
 
-const previousCities = localStorage.getItem("previousCities")
+const cities = localStorage.getItem("cities")
   ? // If there are previous cities
-    JSON.parse(localStorage.getItem("previousCities"))
+    JSON.parse(localStorage.getItem("cities"))
   : // If there are no previous cities
     [];
 
 renderCityBtns();
 
-function getWeatherData(city) {}
+function getWeatherData(city) {
+
+}
 
 function displayMessage(type, message) {
   errorDiv.text(message);
@@ -19,20 +21,11 @@ function displayMessage(type, message) {
 }
 
 function renderCityBtns() {
-
-  let storedCities;
-  // Loop over our previousCities array
-  if (previousCities === null){
-    storedCities = [];
-  } else {
-    storedCities = JSON.parse(previousCities)
-  };
-
   // Make sure to empty out the HTML container so you don't duplicate buttons
-  cityArray.HTML = "";
+  cityArray.HTML = ("");
 
   // create a button for each item in the array (try using .forEach())
-  previousCities.forEach(city => {
+  cities.forEach(city => {
     let row = $('<row>');
     let button = $('<button>').text(city);
 
@@ -44,11 +37,11 @@ function renderCityBtns() {
   
 };
 
-function moveToSearchedCity() {
-  const searchedCity = './searchedCity.html'
-  $(location).attr('href', searchedCity);
+// function moveToSearchedCity() {
+//   const searchedCity = './searchedCity.html'
+//   $(location).attr('href', searchedCity);
 
-}
+// }
 
 function cityFetch(event) {
   // debugger;
@@ -59,17 +52,21 @@ function cityFetch(event) {
 
   if (!city) {
     displayMessage("error", "Please enter a city!");
+    return;
   }
 
   // If the city is not in our previous cities array
   // add it and save it to local storage
-  if (!previousCities.includes(city)) {
+  if (!cities.includes(city)) {
     // Add the city to previousCity array
-    previousCities.push(city);
+    cities.push(city);
     // Save the previous cities to local storage
-    localStorage.setItem("previousCities", JSON.stringify(previousCities));
+    localStorage.setItem("cities", JSON.stringify(cities));
     renderCityBtns();
   }
+
+  const searchedCity = 'Assets/html/searchedCity.html'
+  location.assign(searchedCity);
 
   getWeatherData(city);
 }
