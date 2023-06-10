@@ -65,8 +65,6 @@ function cityFetch(event) {
     renderCityBtns();
   }
 
-  const searchedCity = 'Assets/html/searchedCity.html'
-  location.assign(searchedCity);
 
   getWeatherData(city);
 }
