@@ -1,21 +1,21 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    background-image:linear-gradient(to right, #4088c7, #08355c);
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to right, #4088c7, #08355c);
 }
 
 h1 {
-    color: white;
-    padding: 10px 0px;
+  color: white;
+  padding: 10px 0px;
 }
 
 h2 {
-    padding: 10px;
+  padding: 10px;
 }
 
 h3 {
@@ -27,73 +27,74 @@ h4 {
 }
 
 .center-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 400px;
 }
 
 .text-input {
-    width: 25%;
-    padding: 5px;
-    margin: 5px;
-  }
+  width: 25%;
+  padding: 5px;
+  margin: 5px;
+}
 
 .button {
-    width: 26%;
-    padding: 5px;
-    margin: 5px;
+  width: 26%;
+  padding: 5px;
+  margin: 5px;
 }
 
 .side-search {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
 
 .side-search .text-input,
 .side-search .button {
-    width: 15%;
-    padding: 5px;
-  }
+  width: 15%;
+  padding: 5px;
+}
 
-  #error {
-    visibility: hidden;
-    margin-top: 20px;
-    font-weight: 700;
-    height: 1.2em;
-    font-size: 1.2em;
-  }
+#error {
+  visibility: hidden;
+  margin-top: 20px;
+  font-weight: 700;
+  height: 1.2em;
+  font-size: 1.2em;
+}
 
-  #error.error{
-    visibility: visible;
-    color: red;
-  }
+#error.error {
+  visibility: visible;
+  color: red;
+}
 
-  .cityCont{
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-  }
+.cityCont {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
 
-  .cityCont .button {
-    width: 13.5%;
-    padding: 5px;
-    margin: 9px;
-  }
+.cityCont .button {
+  width: 13.5%;
+  padding: 5px;
+  margin: 9px;
+}
 
-  .cardTodayCity{
+.cardTodayCity {
+  font-size: 16;
+}
 
-  }
+.cardTodayDate {
+  font-size: 16;
+  
+}
 
-  .cardTodayDate{
+.cardBodyToday {
+  font-size: 16;
 
-  }
-
-  .cardBodyToday{
-
-  }
-
+}

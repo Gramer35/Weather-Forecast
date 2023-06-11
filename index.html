@@ -26,15 +26,25 @@
 
     </aside>
 
-    <div class="card">
-        <h3 class="cardTodayCity"></h3>
-        <h4 class="cardTodayDate"></h4>
-        <img class="icons" />
-        <div class="cardBodyToday"></div>
+    <div class="col-12 col-md-9 col-xl-9 colTwo">
+        
+        <!-- insert today's weather -->
+        <div class="row today">
+            
+            <div class="card bg-light mb-3 " style="max-width: 400px;">
+                <h3 class="card-header cardTodayCity"></h3>
+                <h4 class="card-header cardTodayDate"></h4>
+                <img class="icons" />
+                <div class="card-body cardBodyToday">
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Insert 5 day forecast -->
+        <div class="forecast"></div>
 
     </div>
-
-    <div class="forecast"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 

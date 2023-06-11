@@ -2,11 +2,12 @@ const citySearch = $("#citySearch");
 const errorDiv = $("#error");
 const cityArray = $('#cityArray');
 const newSearch = $('#newSearch');
+const cardBodyToday = $('cardBodyToday');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
 
-const key = 'c4a5e4d45a58ffa9a62e67d74766af03'
+const key = 'c4a5e4d45a58ffa9a62e67d74766af03';
 
 const cities = localStorage.getItem("cities")
   ? // If there are previous cities
@@ -20,7 +21,7 @@ function getWeatherData(city) {
 
   let getUrlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${key}`;
 
-	$(cardTodayBody).empty();
+	$(cardBodyToday).empty();
 
   $.ajax({
 		url: getUrlCurrent,
