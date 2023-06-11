@@ -17,19 +17,34 @@
     </header>
 
     <aside class="side-search">
+
         <h2>Search for a City</h2>
         <input class="text-input" type="text" id="cityInput" placeholder="City Name">
         <button class="button" id="newSearch">Search Another City</button>
         <div id="error2"></div>
-        <div id="cityArray"></div>
+        <div class="cityCont" id="cityArray"></div>
+
     </aside>
+
+    <div class="card">
+        <h3 class="cardTodayCity"></h3>
+        <h4 class="cardTodayDate"></h4>
+        <img class="icons" />
+        <div class="cardBodyToday"></div>
+
+    </div>
+
+    <div class="forecast"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/script.js">
     </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous"></script>
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

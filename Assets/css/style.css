@@ -18,6 +18,14 @@ h2 {
     padding: 10px;
 }
 
+h3 {
+  padding: 10px
+}
+
+h4 {
+  padding: 10px
+}
+
 .center-page {
     display: flex;
     flex-direction: column;
@@ -64,3 +72,28 @@ h2 {
     visibility: visible;
     color: red;
   }
+
+  .cityCont{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  }
+
+  .cityCont .button {
+    width: 13.5%;
+    padding: 5px;
+    margin: 9px;
+  }
+
+  .cardTodayCity{
+
+  }
+
+  .cardTodayDate{
+
+  }
+
+  .cardBodyToday{
+
+  }
+
