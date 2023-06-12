@@ -2,9 +2,9 @@ const citySearch = $("#citySearch");
 const errorDiv = $("#error");
 const cityArray = $('#cityArray');
 const newSearch = $('#newSearch');
-const cardBodyToday = $('cardBodyToday');
-const cardTodayDate = $('cardTodayDate');
-const cardTodayCity = $('cardTodayCity');
+const cardBodyToday = $('.cardBodyToday');
+const cardTodayDate = $('.cardTodayDate');
+const cardTodayCity = $('.cardTodayCity');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
@@ -38,7 +38,7 @@ function renderCityBtns() {
 
 };
 
-function cityFetch(event) {
+function cityStore(event) {
 	// debugger;
 	event.preventDefault();
 	console.log("working");
@@ -68,16 +68,11 @@ function getCity(city) {
 	console.log('working again')
 	let getUrlCurrent = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${key}`;
 
-	$(cardBodyToday).empty();
-
 	fetch(getUrlCurrent)
 		.then(function (data) {
 			return data.json();
 		})
 		.then(function (data) {
-			console.log(data);
-			console.log(data[0]);
-			console.log(data[0].name);
 
 			let lat = data[0].lat;
 			let lon = data[0].lon
@@ -104,7 +99,8 @@ function showWeather(data) {
 	console.log(data);
 
 	let city = data.city.name;
-	cardTodayCity.innerHTML = city;
+	cardTodayCity.text(city);
+  cardTodayDate.text(date);
 }
 
 
@@ -114,7 +110,7 @@ function displayMessage(type, message) {
 };
 
 
-citySearch.on('click', cityFetch);
-newSearch.on('click', cityFetch);
+citySearch.on('click', cityStore);
+newSearch.on('click', cityStore);
 // Add event listener for the buttons
 // make sure to use event delegation other wise the event won't work when you add another button
