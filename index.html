@@ -14,30 +14,36 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <aside class="side-search">
+<div class="dashView">
 
+    
+    <aside class="side-search">
+        
         <h2>Search for a City</h2>
         <input class="text-input" type="text" id="cityInput" placeholder="City Name">
         <button class="button" id="newSearch">Search Another City</button>
         <div id="error2"></div>
         <div class="cityCont" id="cityArray"></div>
-
+        
     </aside>
-
+    
+    <div class="cityForecast">
         
         <!-- insert today's weather -->
-        <div class="today">
-            
+            <div class="today">
+                
                 <h3 class="cardTodayCity"></h3>
                 <h4 class="cardTodayDate"></h4>
                 <img class="icons" />
                 <div class="cardBodyToday">
                 </div>
+                
+            </div>
             
+            <!-- Insert 5 day forecast -->
+            <div class="fiveDayForecast">5-Day Forecast</div>
         </div>
-        
-        <!-- Insert 5 day forecast -->
-        <div class="forecast"></div>
+    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

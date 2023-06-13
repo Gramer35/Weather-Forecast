@@ -49,14 +49,15 @@ h4 {
 
 .side-search {
   display: flex;
+  border-style: none solid none none;
   flex-direction: column;
-  width: 100%;
+  width: 25%;
   height: 100vh;
 }
 
 .side-search .text-input,
 .side-search .button {
-  width: 15%;
+  width: 75%;
   padding: 5px;
 }
 
@@ -80,9 +81,28 @@ h4 {
 }
 
 .cityCont .button {
-  width: 13.5%;
+  width: 75%;
   padding: 5px;
   margin: 9px;
+}
+
+.dashView {
+  display: flex;
+
+}
+
+.cityForecast {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.today {
+  align-self: flex-start;
+  border-style: solid;
+  width: 80%;
+  margin: 20px
 }
 
 .cardTodayCity {
@@ -91,10 +111,15 @@ h4 {
 
 .cardTodayDate {
   font-size: 16px;
-  
+
 }
 
 .cardBodyToday {
   font-size: 16px;
 
+}
+
+
+.fiveDayForecast {
+  flex-direction: column;
 }

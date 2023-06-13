@@ -100,7 +100,11 @@ function showWeather(data) {
 
 	let city = data.city.name;
 	cardTodayCity.text(city);
-  cardTodayDate.text(date);
+	cardTodayDate.text(date);
+	// insert icons
+	cardBodyToday.text(`Temp: ${city}`);
+	cardBodyToday.text(`Wind: ${city}`);
+	cardBodyToday.text(`Humidity: ${city}`);
 }
 
 
