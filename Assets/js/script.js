@@ -100,9 +100,9 @@ function getWeather(lat, lon) {
 			console.log(data);
 
       // store temps,winds, and humidity for each day in teh arrays
-      for (let i = 0; i < 6; i++) {
-        if
-      }
+    //   for (let i = 0; i < 6; i++) {
+    //     if
+    //   }
 
 			showWeather(data);
 		})
