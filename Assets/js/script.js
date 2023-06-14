@@ -5,6 +5,9 @@ const newSearch = $('#newSearch');
 const cardBodyToday = $('.cardBodyToday');
 const cardTodayDate = $('.cardTodayDate');
 const cardTodayCity = $('.cardTodayCity');
+const tempToday = $('#tempToday');
+const windToday = $('#windToday');
+const humidityToday = $('#humidityToday');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
@@ -82,6 +85,11 @@ function getCity(city) {
 
 function getWeather(lat, lon) {
 
+  let temps = [];
+  let winds = [];
+  let humidity = [];
+  let futureDates = [];
+
 	weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=english&appid=${key}`;
 
 	fetch(weatherUrl)
@@ -90,13 +98,18 @@ function getWeather(lat, lon) {
 		})
 		.then(function (data) {
 			console.log(data);
+
+      // store temps,winds, and humidity for each day in teh arrays
+      for (let i = 0; i < 6; i++) {
+        if
+      }
+
 			showWeather(data);
 		})
 
 };
 
 function showWeather(data) {
-	console.log(data);
 
 	let city = data.city.name;
 	cardTodayCity.text(city);
@@ -105,6 +118,7 @@ function showWeather(data) {
 	cardBodyToday.text(`Temp: ${city}`);
 	cardBodyToday.text(`Wind: ${city}`);
 	cardBodyToday.text(`Humidity: ${city}`);
+
 }
 
 
