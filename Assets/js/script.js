@@ -85,10 +85,10 @@ function getCity(city) {
 
 function getWeather(lat, lon) {
 
-  let temps = [];
-  let winds = [];
-  let humidity = [];
-  let futureDates = [];
+	let temps = [];
+	let winds = [];
+	let humidity = [];
+	let futureDates = [];
 
 	weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=english&appid=${key}`;
 
@@ -98,10 +98,19 @@ function getWeather(lat, lon) {
 		})
 		.then(function (data) {
 			console.log(data);
+			console.log(data.list);
 
-      // store temps,winds, and humidity for each day in teh arrays
-    //   for (let i = 0; i < 6; i++) {
-    //     if
+			data.list.filter(time => time.dt_txt.includes('12:00:00')).forEach(item => {
+				console.log(item);
+			})
+
+		
+
+
+
+			// store temps,winds, and humidity for each day in teh arrays
+	// 		for (let i = 0; i < times.; i++) {
+	// 			if
     //   }
 
 			showWeather(data);
