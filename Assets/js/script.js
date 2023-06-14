@@ -8,6 +8,7 @@ const cardTodayCity = $('.cardTodayCity');
 const tempToday = $('#tempToday');
 const windToday = $('#windToday');
 const humidityToday = $('#humidityToday');
+const fiveDayForecast = $('.fiveDayForecast');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
@@ -85,12 +86,7 @@ function getCity(city) {
 
 function getWeather(lat, lon) {
 
-	let temps = [];
-	let winds = [];
-	let humidity = [];
-	let futureDates = [];
-
-	weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=english&appid=${key}`;
+	weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&lang=english&appid=${key}`;
 
 	fetch(weatherUrl)
 		.then(function (data) {
@@ -100,8 +96,26 @@ function getWeather(lat, lon) {
 			console.log(data);
 			console.log(data.list);
 
+
 			data.list.filter(time => time.dt_txt.includes('12:00:00')).forEach(item => {
-				console.log(item);
+				const temp = item.main.temp;
+        const wind = item.wind.speed;
+        const humidity = item.main.humidity;
+
+        let div = $('<div>');
+        let tempListItem = $('<li>').text(`Temperature: ${temp}°F`);
+        let windListItem = $('<li>').text(`Wind: ${wind} MPH`);
+        let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`)
+        console.log(temp, wind, humidity);
+
+        fiveDayForecast.text('5-Day Forecast');
+        div.append(tempListItem);
+        div.append(windListItem);
+        div.append(humidityListItem);
+      
+        fiveDayForecast.append(div);
+
+
 			})
 
 		
@@ -124,9 +138,9 @@ function showWeather(data) {
 	cardTodayCity.text(city);
 	cardTodayDate.text(date);
 	// insert icons
-	cardBodyToday.text(`Temp: ${city}`);
-	cardBodyToday.text(`Wind: ${city}`);
-	cardBodyToday.text(`Humidity: ${city}`);
+	tempToday.text(`Temp: ${city}`);
+	windToday.text(`Wind: ${city}`);
+	humidityToday.text(`Humidity: ${city}`);
 
 }
 
