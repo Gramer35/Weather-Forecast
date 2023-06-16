@@ -9,6 +9,7 @@ const tempToday = $('#tempToday');
 const windToday = $('#windToday');
 const humidityToday = $('#humidityToday');
 const fiveDayForecast = $('.fiveDayForecast');
+const forecastTitle = $('#forecastTitle');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
@@ -97,36 +98,37 @@ function getWeather(lat, lon) {
 			console.log(data.list);
 
 
-      fiveDayForecast.text('5-Day Forecast');
-      
+			const title = $('<h3>').text('5-Day Forecast');
+			forecastTitle.append(title);
+
 			data.list.filter(time => time.dt_txt.includes('12:00:00')).forEach(item => {
 				const temp = item.main.temp;
-        const wind = item.wind.speed;
-        const humidity = item.main.humidity;
+				const wind = item.wind.speed;
+				const humidity = item.main.humidity;
 
-        let div = $('<div>');
-        let tempListItem = $('<li>').text(`Temperature: ${temp}°F`);
-        let windListItem = $('<li>').text(`Wind: ${wind} MPH`);
-        let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`)
-        console.log(temp, wind, humidity);
+				let div = $('<div>');
+				let tempListItem = $('<li>').text(`Temperature: ${temp}°F`);
+				let windListItem = $('<li>').text(`Wind: ${wind} MPH`);
+				let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`)
+				console.log(temp, wind, humidity);
 
-        div.append(tempListItem);
-        div.append(windListItem);
-        div.append(humidityListItem);
-      
-        fiveDayForecast.append(div);
+				div.append(tempListItem);
+				div.append(windListItem);
+				div.append(humidityListItem);
+
+				fiveDayForecast.append(div);
 
 
 			})
 
-		
+
 
 
 
 			// store temps,winds, and humidity for each day in teh arrays
-	// 		for (let i = 0; i < times.; i++) {
-	// 			if
-    //   }
+			// 		for (let i = 0; i < times.; i++) {
+			// 			if
+			//   }
 
 			showWeather(data);
 		})
