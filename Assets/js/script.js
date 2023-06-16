@@ -97,6 +97,8 @@ function getWeather(lat, lon) {
 			console.log(data.list);
 
 
+      fiveDayForecast.text('5-Day Forecast');
+      
 			data.list.filter(time => time.dt_txt.includes('12:00:00')).forEach(item => {
 				const temp = item.main.temp;
         const wind = item.wind.speed;
@@ -108,7 +110,6 @@ function getWeather(lat, lon) {
         let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`)
         console.log(temp, wind, humidity);
 
-        fiveDayForecast.text('5-Day Forecast');
         div.append(tempListItem);
         div.append(windListItem);
         div.append(humidityListItem);
