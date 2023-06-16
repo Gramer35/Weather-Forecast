@@ -97,6 +97,8 @@ function getWeather(lat, lon) {
 			console.log(data);
 			console.log(data.list);
 
+      fiveDayForecast.empty();
+      forecastTitle.empty();
 
 			const title = $('<h3>').text('5-Day Forecast');
 			forecastTitle.append(title);
