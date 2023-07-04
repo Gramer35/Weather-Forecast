@@ -107,13 +107,15 @@ function getWeather(lat, lon) {
 				const temp = item.main.temp;
 				const wind = item.wind.speed;
 				const humidity = item.main.humidity;
+        const futureDate = item;
 
 				let div = $('<div>');
-				let tempListItem = $('<li>').text(`Temperature: ${temp}°F`);
-				let windListItem = $('<li>').text(`Wind: ${wind} MPH`);
-				let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`)
+				let tempListItem = $('<li>').text(`Temp: ${temp}°F`).addClass('listItem');
+				let windListItem = $('<li>').text(`Wind: ${wind} MPH`).addClass('listItem');
+				let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`).addClass('listItem');
 				console.log(temp, wind, humidity);
 
+        div.addClass('forecastCard');
 				div.append(tempListItem);
 				div.append(windListItem);
 				div.append(humidityListItem);
