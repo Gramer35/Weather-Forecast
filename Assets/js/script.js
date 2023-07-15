@@ -10,7 +10,7 @@ const windToday = $('#windToday');
 const humidityToday = $('#humidityToday');
 const fiveDayForecast = $('.fiveDayForecast');
 const forecastTitle = $('#forecastTitle');
-const cityForecast = $('#cityForecast');
+const cityForecast = $('.cityForecast');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
@@ -46,17 +46,19 @@ function renderCityBtns() {
 
 function cityStore(event) {
 
+	
 	// debugger;
 	event.preventDefault();
 	console.log("working");
 
+	
 	const city = $("#cityInput").val().trim().toLowerCase();
-
+	
 	if (!city) {
 		displayMessage("error", "Please enter a city!");
 		return;
 	}
-
+	
 	// If the city is not in our previous cities array
 	// add it and save it to local storage
 	if (!cities.includes(city)) {
@@ -66,7 +68,8 @@ function cityStore(event) {
 		localStorage.setItem("cities", JSON.stringify(cities));
 		renderCityBtns();
 	}
-
+	
+	cityForecast.css({visibility: 'visible' });
 
 	getCity(city);
 }
@@ -143,7 +146,6 @@ function getWeather(lat, lon) {
 
 function showWeather(lat, lon) {
 
-	// cityForecast.style.display = 'visible';
 
 	weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`
 

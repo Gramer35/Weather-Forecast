@@ -95,6 +95,7 @@ padding: 10px;
 }
 
 .cityForecast {
+  visibility:hidden;
   display: flex;
   flex-direction: column;
   height: 100vh;
