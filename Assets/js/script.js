@@ -30,9 +30,13 @@ function renderCityBtns() {
 	cityArray.empty();
 
 	// create a button for each item in the array (try using .forEach())
-	cities.forEach(city => {
+	cities.forEach(cityObj => {
 		let row = $('<row>');
-		let button = $('<button>').text(city);
+		let button = $('<button>').text(cityObj.originalCity);
+		button.on('click', function() {
+			getCity(cityObj.city);
+			cityForecast.css({ visibility: 'visible' })
+		}) 
 
 		// append to a container on the HTML page
 		button.addClass('button');
@@ -46,30 +50,30 @@ function renderCityBtns() {
 
 function cityStore(event) {
 
-	
-	// debugger;
 	event.preventDefault();
 	console.log("working");
 
-	
+
 	const city = $("#cityInput").val().trim().toLowerCase();
-	
+
 	if (!city) {
 		displayMessage("error", "Please enter a city!");
 		return;
 	}
-	
+
+	const existingCity = cities.find(item => item.city.toLowerCase() === city);
+
 	// If the city is not in our previous cities array
 	// add it and save it to local storage
-	if (!cities.includes(city)) {
+	if (!existingCity) {
 		// Add the city to previousCity array
-		cities.push(city);
+		cities.push({ city: city, originalCity: $('#cityInput').val().trim() });
 		// Save the previous cities to local storage
 		localStorage.setItem("cities", JSON.stringify(cities));
 		renderCityBtns();
 	}
-	
-	cityForecast.css({visibility: 'visible' });
+
+	cityForecast.css({ visibility: 'visible' });
 
 	getCity(city);
 }
@@ -103,8 +107,8 @@ function getWeather(lat, lon) {
 			console.log(data);
 			console.log(data.list);
 
-      fiveDayForecast.empty();
-      forecastTitle.empty();
+			fiveDayForecast.empty();
+			forecastTitle.empty();
 
 			const title = $('<h3>').text('5-Day Forecast');
 			forecastTitle.append(title);
@@ -113,35 +117,25 @@ function getWeather(lat, lon) {
 				const temp = item.main.temp;
 				const wind = item.wind.speed;
 				const humidity = item.main.humidity;
-        const futureDate = item;
+				const futureDate = item.dt_txt;
+				const formattedDate = new Date(futureDate).toLocaleDateString();
 
 				let div = $('<div>');
+				let dateListItem = $('<li>').text(`${formattedDate}`).addClass('listItem boldText')
 				let tempListItem = $('<li>').text(`Temp: ${temp}°F`).addClass('listItem');
 				let windListItem = $('<li>').text(`Wind: ${wind} MPH`).addClass('listItem');
 				let humidityListItem = $('<li>').text(`Humidity: ${humidity}%`).addClass('listItem');
 				console.log(temp, wind, humidity);
 
-        div.addClass('forecastCard');
+				div.addClass('forecastCard');
+				div.append(dateListItem);
 				div.append(tempListItem);
 				div.append(windListItem);
 				div.append(humidityListItem);
 
 				fiveDayForecast.append(div);
-
-
 			})
-
-
-
-
-
-			// store temps,winds, and humidity for each day in teh arrays
-			// 		for (let i = 0; i < times.; i++) {
-			// 			if
-			//   }
-
 		})
-
 };
 
 function showWeather(lat, lon) {
@@ -168,6 +162,8 @@ function showWeather(lat, lon) {
 			tempToday.text(`Temp: ${temp} °F`);
 			windToday.text(`Wind: ${wind} MPH`);
 			humidityToday.text(`Humidity: ${humidity}%`);
+
+			$('#cityInput').val('');
 		})
 
 

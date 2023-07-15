@@ -20,7 +20,7 @@ h2 {
 }
 
 h3 {
-  font-size: 16px;
+  font-size: 25px;
   padding: 10px;
 }
 
@@ -39,16 +39,9 @@ padding: 10px;
 }
 
 .text-input {
-  width: 25%;
-  padding: 5px;
   margin: 5px;
 }
 
-.button {
-  width: 26%;
-  padding: 5px;
-  margin: 5px;
-}
 
 .side-search {
   display: flex;
@@ -58,10 +51,19 @@ padding: 10px;
   height: 100vh;
 }
 
-.side-search .text-input,
-.side-search .button {
-  width: 75%;
+.side-search .text-input {
+  width: 90%;
   padding: 5px;
+  margin: 5px 15px;
+  border-radius: 5px
+} 
+
+.side-search .button {
+  width: 96%;
+  padding: 5px;
+  margin: 5px 15px;
+  border: none;
+  border-radius: 5px;
 }
 
 #error {
@@ -80,14 +82,10 @@ padding: 10px;
 .cityCont {
   display: flex;
   flex-direction: column;
-  margin: 5px;
 }
 
-.cityCont .button {
-  width: 75%;
-  padding: 5px;
-  margin: 9px;
-}
+/* .button {
+} */
 
 .dashView {
   display: flex;
@@ -104,6 +102,7 @@ padding: 10px;
 
 .today {
   display: flex;
+  align-items: center;
   flex-direction: column;
   border-style: solid;
   width: 94%;
@@ -122,9 +121,14 @@ font-size: 16px;
 
 }
 
-.cardBodyToday {
+.cardBodyToday,
+.cardBodyToday li {
+  display: flex;
   font-size: 16px;
-
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0px 15px;
+  font-size: 25px;
 }
 
 
@@ -135,20 +139,31 @@ font-size: 16px;
 }
 
 .forecastCard {
-  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
   background-color: #0f0c59;
   color: white;
   font-weight: bold;
+
 }
 
 .listItem {
   margin: 10px 0px;
+  list-style-type: none;
+  font-weight: 100;
+  font-size: 20px;
 }
 
 #forecastTitle {
   display: flex;
   justify-content: center;
 
+}
+
+.boldText {
+  font-weight: 900;
 }
