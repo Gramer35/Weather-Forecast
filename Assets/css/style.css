@@ -64,6 +64,7 @@ padding: 10px;
   margin: 5px 15px;
   border: none;
   border-radius: 5px;
+  background-color: #7b7f85;
 }
 
 #error {
@@ -84,8 +85,6 @@ padding: 10px;
   flex-direction: column;
 }
 
-/* .button {
-} */
 
 .dashView {
   display: flex;
