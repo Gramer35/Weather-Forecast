@@ -10,6 +10,7 @@ const windToday = $('#windToday');
 const humidityToday = $('#humidityToday');
 const fiveDayForecast = $('.fiveDayForecast');
 const forecastTitle = $('#forecastTitle');
+const cityForecast = $('#cityForecast');
 
 const date = moment().format('dddd, MMMM Do YYYY');
 const dateTime = moment().format('YYYY-MM-DD HH:MM:SS')
@@ -44,6 +45,7 @@ function renderCityBtns() {
 };
 
 function cityStore(event) {
+
 	// debugger;
 	event.preventDefault();
 	console.log("working");
@@ -81,7 +83,8 @@ function getCity(city) {
 
 			let lat = data[0].lat;
 			let lon = data[0].lon
-			getWeather(lat, lon)
+			getWeather(lat, lon);
+			showWeather(lat, lon);
 		});
 };
 
@@ -134,20 +137,37 @@ function getWeather(lat, lon) {
 			// 			if
 			//   }
 
-			showWeather(data);
 		})
 
 };
 
-function showWeather(data) {
+function showWeather(lat, lon) {
 
-	let city = data.city.name;
-	cardTodayCity.text(city);
-	cardTodayDate.text(date);
-	// insert icons
-	tempToday.text(`Temp: ${city}`);
-	windToday.text(`Wind: ${city}`);
-	humidityToday.text(`Humidity: ${city}`);
+	// cityForecast.style.display = 'visible';
+
+	weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`
+
+	fetch(weatherURL)
+		.then(function (data) {
+			return data.json();
+		})
+		.then(function (data) {
+			console.log(data);
+			console.log(data.list);
+
+			let city = data.name;
+			let temp = data.main.temp
+			let humidity = data.main.humidity
+			let wind = data.wind.speed
+			console.log(city);
+			cardTodayCity.text(city);
+			cardTodayDate.text(date);
+			// insert icons
+			tempToday.text(`Temp: ${temp} °F`);
+			windToday.text(`Wind: ${wind} MPH`);
+			humidityToday.text(`Humidity: ${humidity}%`);
+		})
+
 
 }
 
